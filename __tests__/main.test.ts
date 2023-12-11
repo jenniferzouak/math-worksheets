@@ -1,42 +1,73 @@
-import { Delays, greeter } from '../src/main.js';
 
-describe('greeter function', () => {
-  const name = 'John';
-  let hello: string;
 
-  let timeoutSpy: jest.SpyInstance;
+import { generateMultiplicationProblem } from '../src/generateMultiplicationProblem.js';
+import { generateProblemSet } from '../src/generateProblemSet.js';
+import { generateDivisionProblem } from '../src/generateDivisionProblem.js';
+import { generateSubtractionProblem } from '../src/generateSubtractionProblem.js';
 
-  // Act before assertions
+
+
+describe('subtraction problem generation', () => {
+  let result: string;
+
   beforeAll(async () => {
-    // Read more about fake timers
-    // http://facebook.github.io/jest/docs/en/timer-mocks.html#content
-    // Jest 27 now uses "modern" implementation of fake timers
-    // https://jestjs.io/blog/2021/05/25/jest-27#flipping-defaults
-    // https://github.com/facebook/jest/pull/5171
-    jest.useFakeTimers();
-    timeoutSpy = jest.spyOn(global, 'setTimeout');
-
-    const p: Promise<string> = greeter(name);
-    jest.runOnlyPendingTimers();
-    hello = await p;
+    result = generateSubtractionProblem(5);
   });
 
-  // Teardown (cleanup) after assertions
-  afterAll(() => {
-    timeoutSpy.mockRestore();
+  // Assert result
+  it('provides a random math problem such as `2-1=1', () => {
+    expect(result).toContain(`-`);
+    expect(result).toContain(`=`);
+  });
+});
+
+describe('multiplication problem generation', () => {
+  let result: string;
+
+  beforeAll(async () => {
+    result = generateMultiplicationProblem(5);
   });
 
-  // Assert if setTimeout was called properly
-  it('delays the greeting by 2 seconds', () => {
-    expect(setTimeout).toHaveBeenCalledTimes(1);
-    expect(setTimeout).toHaveBeenLastCalledWith(
-      expect.any(Function),
-      Delays.Long,
+  // Assert result
+  it('provides a random math problem such as `2*1=2', () => {
+    expect(result).toContain(`*`);
+    expect(result).toContain(`=`);
+  });
+});
+
+describe('division problem generation', () => {
+  let result: string;
+
+  beforeAll(async (): Promise<void> => {
+    result = generateDivisionProblem(5);
+  });
+
+  // Assert result
+  it('provides a random math problem such as `2/1=2', () => {
+    expect(result).toContain(`÷`);
+    expect(result).toContain(`=`);
+  });
+});
+
+describe('problem set generation', () => {
+  let result: string[];
+  const desiredSetSize = 1;
+
+  beforeAll(async (): Promise<void> => {
+    result = generateProblemSet(
+      [
+        // (): string => generateMultiplicationProblem(999, 99),
+        (): string => generateDivisionProblem(9999, true),
+        // (): string => generateAdditionProblem(2),
+        // (): string => generateSubtractionProblem(2, 1),
+      ],
+      desiredSetSize,
     );
+    console.log(result);
   });
 
-  // Assert greeter result
-  it('greets a user with `Hello, {name}` message', () => {
-    expect(hello).toBe(`Hello, ${name}`);
+  // Assert result
+  it('provides an array of random math problem such as `1+1=2', () => {
+    expect(result.length).toBe(desiredSetSize);
   });
 });
