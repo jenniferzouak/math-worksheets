@@ -14,9 +14,9 @@ export function generateDivisionProblem(
   quotientmin: number = 1,
   avoidRemainder: boolean = false,
 ): string {
-  let divisor = generateRandomTerm(divisormin, divisormax);
-  let quotient = generateRandomTerm(quotientmin, quotientmax);
-  let dividend = divisor * quotient;
+  const divisor = generateRandomTerm(divisormin, divisormax);
+  const quotient = generateRandomTerm(quotientmin, quotientmax);
+  const dividend = divisor * quotient;
 
   if (avoidRemainder) {
     return `${dividend} ÷ ${divisor} = ${quotient}`;

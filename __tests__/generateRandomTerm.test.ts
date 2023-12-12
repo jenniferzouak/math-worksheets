@@ -36,7 +36,7 @@ describe('random integer generation', () => {
     const limitMax: number = 2;
     const setSize: number = 25;
     let countdown: number = setSize;
-    const generatedSet: number[] = Array();
+    const generatedSet: number[] = [];
     do {
       const rc = generateRandomTerm(limitMin, limitMax);
       generatedSet.push(rc);
@@ -44,7 +44,7 @@ describe('random integer generation', () => {
 
     expect(generatedSet.length).toBe(setSize);
 
-    let cSquared: number = chiSquareCalc(generatedSet, limitMax - limitMin + 1);
+    const cSquared: number = chiSquareCalc(generatedSet, limitMax - limitMin + 1);
     expect(cSquared).toBeLessThan(15);
 
   });
@@ -85,7 +85,7 @@ describe('random integer generation', () => {
     expect(count).toBeLessThan(maxTries);
   });
 
-  test('it can generate numbers for a range with |1| ', () => {
+  test('it can generate numbers for a range with |1|', () => {
     let count: number = 0;
     const maxTries = 100;
     const sameLimit: number = 1;
@@ -97,7 +97,7 @@ describe('random integer generation', () => {
     expect(count).toBeLessThan(maxTries);
   });
 
-  test('it can generate numbers for a range with |1| when it is zero ', () => {
+  test('it can generate numbers for a range with |1| when it is zero', () => {
     let count: number = 0;
     const maxTries = 100;
     const sameLimit: number = 0;
@@ -115,7 +115,7 @@ function chiSquareCalc(set: number[], bincount: number): number {
   let cSquared: number = 0;
 
   // histogram: create the bins and count entries
-  let bins: number[] = new Array(bincount);
+  const bins: number[] = new Array(bincount);
   for (const x of set) {
     if (x in bins) {
       bins[x] = bins[x] + 1;

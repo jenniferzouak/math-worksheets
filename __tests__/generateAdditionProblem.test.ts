@@ -25,7 +25,7 @@ describe('addition problem generation', () => {
     result = generateAdditionProblem(1, 1, 1, 1, true);
     expect(result).toContain(`+`);
     expect(result).toContain(`=`);
-    let terms = result.split(/[\s,\+\=]+/);
+    const terms = result.split(/[\s,+=]+/);
     expect(Number(terms[0])).toBe(1);
     expect(Number(terms[1])).toBe(1);
     expect(Number(terms[2])).toBe(2);
@@ -39,7 +39,7 @@ describe('addition problem generation', () => {
 
     do {
       result = generateAdditionProblem(maxTerm, maxTerm, minTerm, minTerm);
-      let terms = result.split(/[\s,\+\=]+/);
+      const terms = result.split(/[\s,+=]+/);
       expect(Number(terms[0])).toBeLessThanOrEqual(maxTerm);
       expect(Number(terms[0])).toBeGreaterThanOrEqual(minTerm);
       expect(Number(terms[1])).toBeLessThanOrEqual(maxTerm);
