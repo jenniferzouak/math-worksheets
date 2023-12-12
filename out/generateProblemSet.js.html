@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: generateProblemSet.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,40 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: generateProblemSet.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * This function generates a random problem set based on the generator functions passed in. It will try not to create duplicate problems, if at all possible. Note: Duplicate check is not based on canonical representation.
+ * @param generators An array of one or more functions which generate problems
+ * @param setSize The retryCount of unique problems to generate
+ * @returns Array of PlainText Math strings for the generated problems
+ */
+export function generateProblemSet(generators, setSize) {
+    const result = [];
+    for (let i = 0; i &lt; setSize; i++) {
+        let tmp;
+        let retryCount = 0;
+        // checks for duplicates and looks for another problem if so
+        do {
+            // choose a generator
+            const generator = generators[Math.floor(Math.random() * generators.length)];
+            tmp = generator();
+            retryCount++;
+        } while (result.includes(tmp) &amp;&amp; retryCount &lt; 5 * generators.length);
+        result.push(tmp);
+    }
+    return result;
+}
+//# sourceMappingURL=generateProblemSet.js.map</code></pre>
+        </article>
+    </section>
 
 
 

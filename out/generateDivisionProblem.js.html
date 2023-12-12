@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: generateDivisionProblem.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,38 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: generateDivisionProblem.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { generateRandomTerm } from './generateRandomTerm.js';
+/**
+ * This function generates a random division problem within the given parameters. The difference will not be imaginary.
+ * @param maxDividend Constrains the dividen of the problem to be no larger than this value
+ * @param avoidRemainder (optional) Constrains the divisor such that a remainder is not needed
+ * @returns PlainText Math string for the generated problem
+ */
+export function generateDivisionProblem(divisormax = 12, // dividend
+quotientmax = 12, // quotient
+divisormin = 1, quotientmin = 1, avoidRemainder = false) {
+    const divisor = generateRandomTerm(divisormin, divisormax);
+    const quotient = generateRandomTerm(quotientmin, quotientmax);
+    const dividend = divisor * quotient;
+    if (avoidRemainder) {
+        return `${dividend} ÷ ${divisor} = ${quotient}`;
+    }
+    // else remainder
+    const remainder = generateRandomTerm(0, divisor - 1);
+    return `${(dividend + remainder)} ÷ ${divisor} = ${(quotient)} R${remainder}`;
+}
+//# sourceMappingURL=generateDivisionProblem.js.map</code></pre>
+        </article>
+    </section>
 
 
 

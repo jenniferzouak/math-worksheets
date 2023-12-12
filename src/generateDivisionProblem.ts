@@ -1,12 +1,11 @@
+import { generateRandomTerm } from './generateRandomTerm.js';
+
 /**
  * This function generates a random division problem within the given parameters. The difference will not be imaginary.
  * @param maxDividend Constrains the dividen of the problem to be no larger than this value
  * @param avoidRemainder (optional) Constrains the divisor such that a remainder is not needed
  * @returns PlainText Math string for the generated problem
  */
-
-import { generateRandomTerm } from './generateRandomTerm.js';
-
 export function generateDivisionProblem(
   divisormax: number = 12, // dividend
   quotientmax: number = 12, // quotient

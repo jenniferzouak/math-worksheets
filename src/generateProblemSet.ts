@@ -6,8 +6,8 @@
  */
 
 export function generateProblemSet(
-  generators: { (): string; }[],
-  setSize: number
+  generators: { (): string }[],
+  setSize: number,
 ): string[] {
   const result: string[] = [];
 
@@ -17,7 +17,8 @@ export function generateProblemSet(
     // checks for duplicates and looks for another problem if so
     do {
       // choose a generator
-      const generator = generators[Math.floor(Math.random() * generators.length)];
+      const generator =
+        generators[Math.floor(Math.random() * generators.length)];
 
       tmp = generator();
       retryCount++;

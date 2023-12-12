@@ -7,7 +7,6 @@ import { generateRandomTerm } from './generateRandomTerm.js';
  * @param avoidBorrowing (optional) Constrains the subtrahend such that borrowing is not necessary
  * @returns PlainText Math string for the generated problem
  */
-
 export function generateSubtractionProblem(
   term1max: number = 99,
   term2max: number = 99,
@@ -36,7 +35,7 @@ export function generateSubtractionProblem(
       term2NewMax = Math.min(term1, term2max);
     }
     term2NewMax = Math.max(term2NewMax, term2min);
-    
+
     term2 = generateRandomTerm(term2min, term2NewMax);
     difference = term1 - term2;
   } while (avoidBorrowing && hasBorrowing(term1, term2));

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: generateMultiplicationProblem.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,31 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: generateMultiplicationProblem.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { generateRandomTerm } from "./generateRandomTerm.js";
+/**
+ * This function generates a random multiplication problem within the given parameters
+ * @param maxTerm Constrains the factor(s) of the problem to be no larger than this value
+ * @param maxTerm2 (Optional) Constrains the second factor to be no larger than this value
+ * @returns PlainText Math string for the generated problem
+ */
+export function generateMultiplicationProblem(term1max = 12, term2max = 12, term1min = 0, term2min = 0) {
+    const term1 = generateRandomTerm(term1min, term1max);
+    const term2 = generateRandomTerm(term2min, term2max);
+    const product = term1 * term2;
+    return `${term1} * ${term2} = ${product}`;
+}
+//# sourceMappingURL=generateMultiplicationProblem.js.map</code></pre>
+        </article>
+    </section>
 
 
 

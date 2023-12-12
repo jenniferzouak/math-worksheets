@@ -1,15 +1,14 @@
+import { generateRandomTerm } from "./generateRandomTerm.js";
+
 /**
  * This function generates a random multiplication problem within the given parameters
  * @param maxTerm Constrains the factor(s) of the problem to be no larger than this value
  * @param maxTerm2 (Optional) Constrains the second factor to be no larger than this value
  * @returns PlainText Math string for the generated problem
  */
-
-import { generateRandomTerm } from "./generateRandomTerm.js";
-
 export function generateMultiplicationProblem(
   term1max: number = 12,
-  term2max: number = 12,     
+  term2max: number = 12,
   term1min: number = 0,
   term2min: number = 0
 ): string {
